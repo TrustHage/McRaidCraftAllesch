@@ -1,0 +1,76 @@
+main: me.trusthage.allesch.other.Main
+version: 1.0
+name: MCRaidCraft AllesInEen
+author: TrustHage
+
+commands:
+  regen:
+    description: Regen
+  fury:
+    description: Fury
+  rage:
+    description: Rage
+  tnt:
+    description: Shoot a TNT block
+  mcraidcraft:
+    description: Info and stuff
+  openinv:
+    description: Open player inventory's
+  clearinv:
+    description: Clear players inventory
+  ci:
+    description: Clear players inventory
+  fly:
+    description: Set fly modus
+  nick:
+    description: Set a nickname
+  nickname:
+    description: Set a nickname
+  gm:
+    description: Change your gamemode
+  gamemode:
+    description: Change your gamemode
+  time:
+    description: Change time
+  kick:
+    description: kick a player
+  ban:
+    description: ban a player
+  unban:
+    description: unban a player
+  give:
+    description: give a player an item
+  god:
+    description: enable / disable godmode
+  msg:
+    description: send a message to a player
+  r:
+    description: reply to a message
+  feed:
+    description: Refresh your food
+  mute:
+    description: Mute a player
+  unmute:
+    description: Unmute a player
+  tp:
+    description: Teleport to a player
+  tpa:
+    description: Send a teleport request to a player
+  tpaccept:
+    description: Accept a teleport request
+  tpdeny:
+    description: Deny a teleport request
+  login:
+    description: Login to your players account
+  register:
+    description: Register your player
+  changepass:
+    description: Change your players password
+  enderchest:
+    description: Open your or another players enderchest
+  echest:
+    description: Open your or another players enderchest
+  heal:
+    description: Heal yourself or another player
+  shout:
+    description: Broadcast a message

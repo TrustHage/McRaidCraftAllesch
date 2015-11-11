@@ -1,0 +1,46 @@
+# Plugin made by TrustHage, www.github.com/trusthage
+
+ServerName: Shout
+
+# Cooldown Times (in seconds)
+TNTCooldown: 150
+RageCooldown: 600
+RegenCooldown: 600
+FuryCooldown: 600
+
+#Auto Message Time (in seconds)
+AutoMessageTime: 300
+
+# Permissions section
+# The Permission with a 2 is a permission
+# to do something to someone else
+
+TNTPermission: mcraidcraft.tnt
+RagePermission: mcraidcraft.rage
+RegenPermission: mcraidcraft.regen
+FuryPermission: mcraidcraft.fury
+ReloadPermission: mcraidcraft.reload
+OpenInvPermission: mcraidcraft.openinv
+ClearInvPermission: mcraidcraft.clearinv
+ClearInvPermission2: mcraidcraft.clearinv.else
+FlyPermission: mcraidcraft.fly
+FlyPermission2: mcraidcraft.fly.else
+NickPermission: mcraidcraft.nick
+NickPermission2: mcraidcraft.nick.else
+GMPermission: mcraidcraft.gm
+GMPermission2: mcraidcraft.gm.else
+TimePermission: mcraidcraft.time
+KickBanPermission: mcraidcraft.kickban
+GivePermission: mcraidcraft.give
+SpawnerPermission: mcraidcraft.spawner
+GodPermission: mcraidcraft.god
+GodPermission2: mcraidcraft.god.else
+FeedPermission: mcraidcraft.feed
+FeedPermission2: mcraidcraft.feed.else
+MutePermission: mcraidcraft.mute
+TeleportPermission: mcraidcraft.teleport
+EnderchestPermission: mcraidcraft.enderchest
+EnderchestPermission2: mcraidcraft.enderchest.else
+HealPermission: mcraidcraft.heal
+HealPermission2: mcraidcraft.heal.else
+ShoutPermission: mcraidcraft.shout
