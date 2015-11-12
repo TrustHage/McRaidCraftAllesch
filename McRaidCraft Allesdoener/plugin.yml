@@ -74,3 +74,5 @@ commands:
     description: Heal yourself or another player
   shout:
     description: Broadcast a message
+  spawn:
+    description: Teleport to the spawn or set/remove the spawnpoint

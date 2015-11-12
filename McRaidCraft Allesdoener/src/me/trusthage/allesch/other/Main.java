@@ -11,40 +11,12 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.trusthage.allesch.commands.BanCommand;
-import me.trusthage.allesch.commands.ChangePasswordCommand;
-import me.trusthage.allesch.commands.ClearInvCommand;
-import me.trusthage.allesch.commands.EnderChestCommand;
-import me.trusthage.allesch.commands.FeedCommand;
-import me.trusthage.allesch.commands.FlyCommand;
-import me.trusthage.allesch.commands.FuryCommand;
-import me.trusthage.allesch.commands.GMCommand;
-import me.trusthage.allesch.commands.GiveCommand;
-import me.trusthage.allesch.commands.GodCommand;
-import me.trusthage.allesch.commands.HealCommand;
-import me.trusthage.allesch.commands.InfoCommand;
-import me.trusthage.allesch.commands.KickCommand;
-import me.trusthage.allesch.commands.LoginCommand;
-import me.trusthage.allesch.commands.MSGCommand;
-import me.trusthage.allesch.commands.MSGReplyCommand;
-import me.trusthage.allesch.commands.MuteCommand;
-import me.trusthage.allesch.commands.NickCommand;
-import me.trusthage.allesch.commands.OpenInvCommand;
-import me.trusthage.allesch.commands.RageCommand;
-import me.trusthage.allesch.commands.RegenCommand;
-import me.trusthage.allesch.commands.RegisterCommand;
-import me.trusthage.allesch.commands.ShoutCommand;
-import me.trusthage.allesch.commands.TNTCommand;
-import me.trusthage.allesch.commands.TeleportCommand;
-import me.trusthage.allesch.commands.TimeCommand;
-import me.trusthage.allesch.commands.TpAcceptCommand;
-import me.trusthage.allesch.commands.TpDenyCommand;
-import me.trusthage.allesch.commands.TpaCommand;
-import me.trusthage.allesch.commands.UnBanCommand;
-import me.trusthage.allesch.commands.UnMuteCommand;
+import me.trusthage.allesch.commands.*;
 public class Main extends JavaPlugin
 {
-
+	
+	public static List<String> spawn = new ArrayList<String>();
+	public List<String> spawnloaded = getConfig().getStringList("Spawn");
 	public static List<String> mute = new ArrayList<String>();
 	public static Main plugin;
 	public List<String> loaded = getConfig().getStringList("Muted");
@@ -58,6 +30,7 @@ public class Main extends JavaPlugin
 	
 	public void onEnable()
 	{
+		getConfig().getStringList("Spawn");
 		getConfig().getStringList("Muted");
 		plugin = this;
 		getConfig().options().copyDefaults(true);
@@ -98,6 +71,7 @@ public class Main extends JavaPlugin
 		getCommand("echest").setExecutor(new EnderChestCommand());
 		getCommand("heal").setExecutor(new HealCommand());
 		getCommand("shout").setExecutor(new ShoutCommand());
+		getCommand("spawn").setExecutor(new SpawnCommand());
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new GodListener(), this);
 		pm.registerEvents(new ChatListener(), this);
@@ -105,6 +79,7 @@ public class Main extends JavaPlugin
 	
 	public void onDisable()
 	{	
+		getConfig().set("Spawn", spawn);
 		getConfig().set("Player Logins", login);
 		getConfig().set("Muted", mute);
 		saveDefaultConfig();

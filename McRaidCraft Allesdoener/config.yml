@@ -44,3 +44,5 @@ EnderchestPermission2: mcraidcraft.enderchest.else
 HealPermission: mcraidcraft.heal
 HealPermission2: mcraidcraft.heal.else
 ShoutPermission: mcraidcraft.shout
+SpawnSetPermission: mcraidcraft.spawn.set
+SpawnRemovePermission: mcraidcraft.spawn.remove
