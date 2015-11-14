@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,8 +16,6 @@ import me.trusthage.allesch.commands.*;
 public class Main extends JavaPlugin
 {
 	
-	public static List<String> spawn = new ArrayList<String>();
-	public List<String> spawnloaded = getConfig().getStringList("Spawn");
 	public static List<String> mute = new ArrayList<String>();
 	public static Main plugin;
 	public List<String> loaded = getConfig().getStringList("Muted");
@@ -30,7 +29,6 @@ public class Main extends JavaPlugin
 	
 	public void onEnable()
 	{
-		getConfig().getStringList("Spawn");
 		getConfig().getStringList("Muted");
 		plugin = this;
 		getConfig().options().copyDefaults(true);
@@ -71,7 +69,6 @@ public class Main extends JavaPlugin
 		getCommand("echest").setExecutor(new EnderChestCommand());
 		getCommand("heal").setExecutor(new HealCommand());
 		getCommand("shout").setExecutor(new ShoutCommand());
-		getCommand("spawn").setExecutor(new SpawnCommand());
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new GodListener(), this);
 		pm.registerEvents(new ChatListener(), this);
@@ -79,7 +76,6 @@ public class Main extends JavaPlugin
 	
 	public void onDisable()
 	{	
-		getConfig().set("Spawn", spawn);
 		getConfig().set("Player Logins", login);
 		getConfig().set("Muted", mute);
 		saveDefaultConfig();
