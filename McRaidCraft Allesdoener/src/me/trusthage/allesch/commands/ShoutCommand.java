@@ -15,7 +15,7 @@ public class ShoutCommand implements CommandExecutor{
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
-		Player player = (Player)sender;
+		
 		
 		msg = this;
 		StringBuilder sb = new StringBuilder();
@@ -23,17 +23,24 @@ public class ShoutCommand implements CommandExecutor{
 			sb.append(args[i]).append(" ");
 		}
 		
-		if(!(sender instanceof Player)) return false;
-		
-		if(player.hasPermission(Main.plugin.getConfig().getString("ShoutPermission"))){
+		if(!(sender instanceof Player)){
 			if(args.length < 1){
-				player.sendMessage(ChatColor.RED + "please type /shout <message>");
+				sender.sendMessage(ChatColor.RED + "please type /shout <message>");
 			}else{
 				String message = sb.toString().trim();
 				Bukkit.getServer().broadcastMessage(ChatColor.RED + "[" + Main.plugin.getConfig().getString("ServerName") + "] " + ChatColor.GOLD + message);
 			}
-		}
-		
+		}else{
+			Player player = (Player)sender;
+			if(player.hasPermission(Main.plugin.getConfig().getString("ShoutPermission"))){
+				if(args.length < 1){
+					player.sendMessage(ChatColor.RED + "please type /shout <message>");
+				}else{
+					String message = sb.toString().trim();
+					Bukkit.getServer().broadcastMessage(ChatColor.RED + "[" + Main.plugin.getConfig().getString("ServerName") + "] " + ChatColor.GOLD + message);
+				}
+			}
+		}			
 		return false;
 	}
 

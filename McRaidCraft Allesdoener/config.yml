@@ -1,5 +1,5 @@
 # Plugin made by TrustHage, www.github.com/trusthage
-
+# Default ServerName is Shout, Change it to your server name
 ServerName: Shout
 
 # Cooldown Times (in seconds)
@@ -44,5 +44,3 @@ EnderchestPermission2: mcraidcraft.enderchest.else
 HealPermission: mcraidcraft.heal
 HealPermission2: mcraidcraft.heal.else
 ShoutPermission: mcraidcraft.shout
-SpawnSetPermission: mcraidcraft.spawn.set
-SpawnRemovePermission: mcraidcraft.spawn.remove
