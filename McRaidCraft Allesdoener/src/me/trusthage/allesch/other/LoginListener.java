@@ -1,9 +1,9 @@
 package me.trusthage.allesch.other;
 
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,13 +18,13 @@ public class LoginListener implements Listener{
 	
 	List<String> loggedinplayers = Main.loggedinplayers;
 	List<String> loadedloggedin = Main.plugin.loadedloggedin;
-	Map<String, String> login = Main.login;
+	FileConfiguration logins = Main.plugin.logins;
 	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e){
 		Player player = e.getPlayer();
 		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(login.containsKey(player.getName()))){
+			if(!(logins.contains(player.getName()))){
 				e.setCancelled(true);
 				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
 			}else{
@@ -38,7 +38,7 @@ public class LoginListener implements Listener{
 	public void onPlayerMove(PlayerMoveEvent e){
 		Player player = e.getPlayer();
 		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(login.containsKey(player.getName()))){
+			if(!(logins.contains(player.getName()))){
 				e.setCancelled(true);
 				
 			}else{
@@ -52,7 +52,7 @@ public class LoginListener implements Listener{
 	public void onPlayerChat(PlayerChatEvent e){
 		Player player = e.getPlayer();
 		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(login.containsKey(player.getName()))){
+			if(!(logins.contains(player.getName()))){
 				e.setCancelled(true);
 				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
 			}else{
@@ -66,7 +66,7 @@ public class LoginListener implements Listener{
 	public void onPlayerCommand(PlayerTeleportEvent e){
 		Player player = e.getPlayer();
 		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(login.containsKey(player.getName()))){
+			if(!(logins.contains(player.getName()))){
 				e.setCancelled(true);
 				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
 			}else{

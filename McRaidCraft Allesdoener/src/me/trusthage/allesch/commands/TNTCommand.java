@@ -28,7 +28,7 @@ private final int cdtime = Main.plugin.getConfig().getInt("TNTCooldown");
     
   Player player = (Player) arg0;
     
-  if (player.hasPermission(Main.plugin.getConfig().getString("TNTPermission")))
+  if (player.hasPermission("mcraidcraft.tnt"))
     {
     long lastUsed = 0L;
     if (this.lastUsage.containsKey(player.getName()))

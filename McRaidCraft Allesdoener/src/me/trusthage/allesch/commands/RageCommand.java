@@ -30,7 +30,7 @@ private final int cdtime = Main.plugin.getConfig().getInt("RageCooldown");
     
   Player player = (Player)arg0;
     
-  if (player.hasPermission(Main.plugin.getConfig().getString("RagePermission")))
+  if (player.hasPermission("mcraidcraft.rage"))
     {
     long lastUsed = 0L;
     if (this.lastUsage.containsKey(player.getName()))

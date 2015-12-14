@@ -17,7 +17,7 @@ public class GMCommand implements CommandExecutor{
 	     if (!(sender instanceof Player)) return false;
 	     Player player = (Player)sender;
 	     if(args.length == 1) {
-	    	 if(player.hasPermission(Main.plugin.getConfig().getString("GMPermission")) || player.isOp()) {
+	    	 if(player.hasPermission("mcraidcraft.gm") || player.isOp()) {
 	         switch(args[0]) {
 	         case "0":
 	           player.setGameMode(GameMode.SURVIVAL);
@@ -49,7 +49,7 @@ public class GMCommand implements CommandExecutor{
 	    	 player.sendMessage(ChatColor.RED + "You don't have access to that command.");
 	     }
 	     else {
-	       if(player.hasPermission(Main.plugin.getConfig().getString("GMPermission2")) || player.isOp()) {
+	       if(player.hasPermission("mcraidcraft.gm.else") || player.isOp()) {
 	         @SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 	         if(target != null && args.length == 2) {

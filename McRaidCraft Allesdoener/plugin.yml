@@ -76,3 +76,9 @@ commands:
     description: Broadcast a message
   spawn:
     description: Teleport to the spawn or set/remove the spawnpoint
+  sethome:
+    description: Set a home to your location
+  delhome:
+    description: Delete your home
+  home:
+    description: Teleport to your home

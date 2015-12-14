@@ -8,8 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class TeleportCommand implements CommandExecutor{
 	
 	@SuppressWarnings("deprecation")
@@ -21,7 +19,7 @@ public class TeleportCommand implements CommandExecutor{
 		Player player = (Player)sender;
 		Player tpfrom = s.getPlayer(args[0]);
 		
-		if(player.hasPermission(Main.plugin.getConfig().getString("TeleportPermission"))){
+		if(player.hasPermission("mcraidcraft.teleport")){
 			if(args.length == 0){
 				player.sendMessage(ChatColor.RED + "Please type /tp <teleport from> <teleport to>");
 			}else{

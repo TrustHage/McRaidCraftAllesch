@@ -1,5 +1,7 @@
 package me.trusthage.allesch.other;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,14 +9,55 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.trusthage.allesch.commands.*;
+import me.trusthage.allesch.commands.BanCommand;
+import me.trusthage.allesch.commands.ChangePasswordCommand;
+import me.trusthage.allesch.commands.ClearInvCommand;
+import me.trusthage.allesch.commands.DelHomeCommand;
+import me.trusthage.allesch.commands.EnderChestCommand;
+import me.trusthage.allesch.commands.FeedCommand;
+import me.trusthage.allesch.commands.FlyCommand;
+import me.trusthage.allesch.commands.FuryCommand;
+import me.trusthage.allesch.commands.GMCommand;
+import me.trusthage.allesch.commands.GiveCommand;
+import me.trusthage.allesch.commands.GodCommand;
+import me.trusthage.allesch.commands.HealCommand;
+import me.trusthage.allesch.commands.HomeCommand;
+import me.trusthage.allesch.commands.InfoCommand;
+import me.trusthage.allesch.commands.KickCommand;
+import me.trusthage.allesch.commands.LoginCommand;
+import me.trusthage.allesch.commands.MSGCommand;
+import me.trusthage.allesch.commands.MSGReplyCommand;
+import me.trusthage.allesch.commands.MuteCommand;
+import me.trusthage.allesch.commands.NickCommand;
+import me.trusthage.allesch.commands.OpenInvCommand;
+import me.trusthage.allesch.commands.RageCommand;
+import me.trusthage.allesch.commands.RegenCommand;
+import me.trusthage.allesch.commands.RegisterCommand;
+import me.trusthage.allesch.commands.SetHomeCommand;
+import me.trusthage.allesch.commands.ShoutCommand;
+import me.trusthage.allesch.commands.TNTCommand;
+import me.trusthage.allesch.commands.TeleportCommand;
+import me.trusthage.allesch.commands.TimeCommand;
+import me.trusthage.allesch.commands.TpAcceptCommand;
+import me.trusthage.allesch.commands.TpDenyCommand;
+import me.trusthage.allesch.commands.TpaCommand;
+import me.trusthage.allesch.commands.UnBanCommand;
+import me.trusthage.allesch.commands.UnMuteCommand;
+
 public class Main extends JavaPlugin
 {
+	
+	public File homesFile = new File(getDataFolder()+"/data/homes.yml");
+	public File loginFile = new File(getDataFolder()+"/data/playerlogins.yml");
+	public FileConfiguration homes = YamlConfiguration.loadConfiguration(homesFile);
+	public FileConfiguration logins = YamlConfiguration.loadConfiguration(loginFile);
 	
 	public static List<String> mute = new ArrayList<String>();
 	public static Main plugin;
@@ -28,7 +71,8 @@ public class Main extends JavaPlugin
 	public PluginDescriptionFile pdfFile = getDescription();
 	
 	public void onEnable()
-	{
+	{	
+		loadFiles();
 		getConfig().getStringList("Muted");
 		plugin = this;
 		getConfig().options().copyDefaults(true);
@@ -69,19 +113,48 @@ public class Main extends JavaPlugin
 		getCommand("echest").setExecutor(new EnderChestCommand());
 		getCommand("heal").setExecutor(new HealCommand());
 		getCommand("shout").setExecutor(new ShoutCommand());
+		getCommand("sethome").setExecutor(new SetHomeCommand());
+		getCommand("delhome").setExecutor(new DelHomeCommand());
+		getCommand("home").setExecutor(new HomeCommand());
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new GodListener(), this);
 		pm.registerEvents(new ChatListener(), this);
+		pm.registerEvents(new LoginListener(), this);
 	}
 	
 	public void onDisable()
 	{	
+		saveFiles();
 		getConfig().set("Player Logins", login);
 		getConfig().set("Muted", mute);
 		saveDefaultConfig();
 		logger.info("McRaidCraft Allesch has been disabled!");
 	}
 	
+	public void saveFiles(){
+		try{
+			logins.save(loginFile);
+			homes.save(homesFile);
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+	}
 	
-
-}
+	public void loadFiles(){
+		if(homesFile.exists()){
+			try{
+				logins.load(loginFile);
+				homes.load(homesFile);
+			}catch (IOException | InvalidConfigurationException e){
+				e.printStackTrace();
+			}
+		}else{
+			try{
+				logins.save(loginFile);
+				homes.save(homesFile);
+			}catch (IOException e){
+				e.printStackTrace();
+			}
+		}
+	}
+}	

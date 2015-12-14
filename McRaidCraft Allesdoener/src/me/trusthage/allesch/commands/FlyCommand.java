@@ -7,8 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class FlyCommand implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -17,7 +15,7 @@ public class FlyCommand implements CommandExecutor {
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("FlyPermission"))){
+			if(player.hasPermission("mcraidcraft.fly")){
 				if(player.getAllowFlight() == false){
 				player.setAllowFlight(true);
 				player.sendMessage(ChatColor.GOLD + "Fly has been enabled.");
@@ -31,7 +29,7 @@ public class FlyCommand implements CommandExecutor {
 		
 			}
 	}else{
-		if(player.hasPermission(Main.plugin.getConfig().getString("FlyPermission2"))){
+		if(player.hasPermission("mcraidcraft.fly.else")){
 			
 		@SuppressWarnings("deprecation")
 		Player target = Bukkit.getServer().getPlayer(args[0]);

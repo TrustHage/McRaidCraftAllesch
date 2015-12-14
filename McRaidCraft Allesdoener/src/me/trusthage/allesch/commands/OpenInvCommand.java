@@ -7,8 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class OpenInvCommand implements CommandExecutor
 {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
@@ -16,13 +14,13 @@ public class OpenInvCommand implements CommandExecutor
 		if (!(sender instanceof Player)) return false;
 		Player player = (Player)sender;
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("OpenInvPermission"))){
+			if(player.hasPermission("mcraidcraft.openinv")){
 				player.sendMessage(ChatColor.RED + "Please type /openinv <playername>");
 			}else{
 				player.sendMessage(ChatColor.RED + "You don't have access to that command");
 			}
 		}else{
-			if (player.hasPermission(Main.plugin.getConfig().getString("OpenInvPermission"))){
+			if (player.hasPermission("mcraidcraft.openinv")){
 				@SuppressWarnings("deprecation")
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				if(target != null && args.length == 1){

@@ -32,7 +32,7 @@ public class ShoutCommand implements CommandExecutor{
 			}
 		}else{
 			Player player = (Player)sender;
-			if(player.hasPermission(Main.plugin.getConfig().getString("ShoutPermission"))){
+			if(player.hasPermission("mcraidcraft.shout")){
 				if(args.length < 1){
 					player.sendMessage(ChatColor.RED + "please type /shout <message>");
 				}else{

@@ -9,8 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.trusthage.allesch.other.Main;
-
 public class GiveCommand implements CommandExecutor{
 
 	@Override
@@ -20,7 +18,7 @@ public class GiveCommand implements CommandExecutor{
 		
 		Player player = (Player)sender;
 		
-		if(player.hasPermission(Main.plugin.getConfig().getString("GivePermission")))
+		if(player.hasPermission("mcraidcraft.give"))
 		{
 			if(args.length == 0 || args.length == 1){
 				player.sendMessage(ChatColor.RED + "please type /give <player> <item> (<amount>)");

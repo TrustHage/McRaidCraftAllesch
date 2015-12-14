@@ -7,8 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class TimeCommand implements CommandExecutor{
 
 	@Override
@@ -18,13 +16,13 @@ public class TimeCommand implements CommandExecutor{
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("TimePermission"))){
+			if(player.hasPermission("mcraidcraft.time")){
 				player.sendMessage(ChatColor.RED + "Please type a day type, for instance /time day ");
 			}else{
 				player.sendMessage(ChatColor.RED + "You don't have access to that command");
 			}
 		}else{
-			if(player.hasPermission(Main.plugin.getConfig().getString("TimePermission"))){
+			if(player.hasPermission("mcraidcraft.time")){
 			switch(args[0]){
 			case "day":
 				player.getWorld().setTime(1000);

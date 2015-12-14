@@ -27,7 +27,7 @@ import me.trusthage.allesch.other.Main;
          }
          
       Player player = (Player)arg0;
-       if (player.hasPermission(Main.plugin.getConfig().getString("FuryPermission")))
+       if (player.hasPermission("mcraidcraft.fury"))
          {
          long lastUsed = 0L;
          if (this.lastUsage.containsKey(player.getName()))

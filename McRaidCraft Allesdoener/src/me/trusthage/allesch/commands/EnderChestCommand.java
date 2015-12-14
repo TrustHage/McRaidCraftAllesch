@@ -19,14 +19,14 @@ public class EnderChestCommand implements CommandExecutor{
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("EnderchestPermission")) || player.hasPermission(Main.plugin.getConfig().getString("EnderchestPermission2"))){
+			if(player.hasPermission("mcraidcraft.enderchest") || player.hasPermission(Main.plugin.getConfig().getString("EnderchestPermission2"))){
 				player.openInventory(player.getEnderChest());
 			}else{
 				player.sendMessage(ChatColor.RED + "You don't have access to that command.");
 			}
 		}else{
 			if(args.length == 1){
-				if(player.hasPermission(Main.plugin.getConfig().getString("EnderchestPermission2"))){
+				if(player.hasPermission("mcraidcraft.enderchest.else")){
 					Player target = Bukkit.getPlayer(args[0]);
 					if(target != null){
 						player.openInventory(target.getEnderChest());

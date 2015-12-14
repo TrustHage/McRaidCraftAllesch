@@ -9,8 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class UnBanCommand implements CommandExecutor{
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
@@ -20,7 +18,7 @@ public class UnBanCommand implements CommandExecutor{
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if (player.hasPermission(Main.plugin.getConfig().getString("KickBanPermission"))){
+			if (player.hasPermission("mcraidcraft.ban")){
 				player.sendMessage(ChatColor.RED + "Please type /unban <playername> and if you want you can add a ban reason");
 			}else {
 				player.sendMessage(ChatColor.RED + "You don't have access to that command");
@@ -31,7 +29,7 @@ public class UnBanCommand implements CommandExecutor{
 		if(args.length == 1){
 			Server s = Bukkit.getServer();
 			OfflinePlayer otarget = s.getOfflinePlayer(args[0]);
-			if(player.hasPermission(Main.plugin.getConfig().getString("KickBanPermission"))){
+			if(player.hasPermission("mcraidcraft.ban")){
 				if(!(otarget.isBanned())){
 					player.sendMessage(ChatColor.RED + "That player is not banned");
 				}else{

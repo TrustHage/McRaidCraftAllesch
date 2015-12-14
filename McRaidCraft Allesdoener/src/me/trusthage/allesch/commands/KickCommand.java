@@ -8,8 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class KickCommand implements CommandExecutor
 {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
@@ -19,7 +17,7 @@ public class KickCommand implements CommandExecutor
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if (player.hasPermission(Main.plugin.getConfig().getString("KickBanPermission"))){
+			if (player.hasPermission("mcraidcraft.kick")){
 				player.sendMessage(ChatColor.RED + "Please type /kick <playername> and if you want you can add a ban reason");
 			}else {
 				player.sendMessage(ChatColor.RED + "You don't have access to that command");
@@ -30,7 +28,7 @@ public class KickCommand implements CommandExecutor
 		if(args.length == 1){
 			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[0]);
-			if(player.hasPermission(Main.plugin.getConfig().getString("KickBanPermission"))){
+			if(player.hasPermission("mcraidcraft.kick")){
 				if(target != null){
 					player.sendMessage(ChatColor.GOLD + "You've kicked: " + ChatColor.RED + target.getName());
 					target.kickPlayer("You're kicked by an admin");
@@ -45,7 +43,7 @@ public class KickCommand implements CommandExecutor
 				Server s = Bukkit.getServer();
 				@SuppressWarnings("deprecation")
 				Player target = s.getPlayer(args[0]);
-				if(player.hasPermission(Main.plugin.getConfig().getString("KickBanPermission"))){
+				if(player.hasPermission("mcraidcraft.kick")){
 					if(target != null){
 						player.sendMessage(ChatColor.GOLD + "You've kicked: " + ChatColor.RED + target.getName() + ChatColor.GOLD + "reason: " + ChatColor.RED + args[1]);
 						target.kickPlayer(args[1]);

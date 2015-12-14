@@ -7,8 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.trusthage.allesch.other.Main;
-
 public class HealCommand implements CommandExecutor{
 	
 	@SuppressWarnings("deprecation")
@@ -17,7 +15,7 @@ public class HealCommand implements CommandExecutor{
 		Player player = (Player)sender;
 		
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("HealPermission")) || player.hasPermission(Main.plugin.getConfig().getString("HealPermission2"))){
+			if(player.hasPermission("mcraidcraft.heal") || player.hasPermission("mcraidcraft.heal.else")){
 				player.setHealth(20);
 				player.sendMessage(ChatColor.GOLD + "You have been healed.");
 			}else{
@@ -25,7 +23,7 @@ public class HealCommand implements CommandExecutor{
 			}
 		}else{
 			if(args.length == 1){
-				if(player.hasPermission(Main.plugin.getConfig().getString("HealPermission2"))){
+				if(player.hasPermission("mcraidcraft.heal.else")){
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if(target != null){
 						target.setHealth(20);

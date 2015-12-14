@@ -19,7 +19,7 @@ public class NickCommand implements CommandExecutor
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player)sender;
 		if(args.length == 0){
-			if(player.hasPermission(Main.plugin.getConfig().getString("NickPermission"))){
+			if(player.hasPermission("mcraidcraft.nick")){
 				if(player.getName() != player.getDisplayName()){
 					player.setDisplayName(player.getName());
 					player.sendMessage(ChatColor.GOLD + "Your Nickname has been disabled.");
@@ -41,7 +41,7 @@ public class NickCommand implements CommandExecutor
 			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			if(target != null){
-				if(player.hasPermission(Main.plugin.getConfig().getString("NickPermission2"))){
+				if(player.hasPermission("mcraidcraft.nick.else")){
 					target.setDisplayName(args[0]);
 					target.sendMessage(ChatColor.GOLD + "Your nickname has been changed to: " + ChatColor.RED + args[0] + ChatColor.GOLD + " by " + ChatColor.RED + player.getDisplayName());
 					player.sendMessage(ChatColor.GOLD + "You changed " + ChatColor.RED + args[1] + ChatColor.RED + "'s" + ChatColor.GOLD + " nickname to: " + ChatColor.RED + args[0]);
