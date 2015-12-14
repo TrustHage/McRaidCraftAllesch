@@ -459,7 +459,7 @@ public class GiveCommand implements CommandExecutor{
 						target.getInventory().addItem(new ItemStack(Material.OBSIDIAN, 1));
 						player.sendMessage(ChatColor.GOLD + "You gave " + ChatColor.RED + args[0] + " 1 Obsidian");
 						break;
-					case "torch":
+					case "torches":
 						target.getInventory().addItem(new ItemStack(Material.TORCH, 1));
 						player.sendMessage(ChatColor.GOLD + "You gave " + ChatColor.RED + args[0] + " 1 Torch");
 						break;
