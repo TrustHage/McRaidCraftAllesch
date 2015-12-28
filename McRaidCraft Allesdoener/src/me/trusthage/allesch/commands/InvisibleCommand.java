@@ -25,7 +25,7 @@ public class InvisibleCommand implements CommandExecutor{
 			}else{
 				if(!(invisible.contains(target.getName()))){
 					invisible.add(target.getName());
-					target.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 0, 0));
+					target.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0), true);
 					target.sendMessage(ChatColor.GOLD + "Invisibiliy has been enabled by the console.");
 					sender.sendMessage(ChatColor.GOLD + "You have enabled " + target.getName() + "'s invisibility.");
 				}else{
@@ -41,7 +41,7 @@ public class InvisibleCommand implements CommandExecutor{
 			if(player.hasPermission("mcraidcraft.invisible")){
 				if(!(invisible.contains(player.getName()))){
 					invisible.add(player.getName());
-					player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 0, 0));
+					player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0));
 					player.sendMessage(ChatColor.GOLD + "Invisibility has been enabled, type /invis to disable.");
 				}else{
 					invisible.remove(player.getName());
