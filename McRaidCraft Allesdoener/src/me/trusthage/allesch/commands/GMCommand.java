@@ -50,8 +50,7 @@ public class GMCommand implements CommandExecutor{
 	     }
 	     else {
 	       if(player.hasPermission("mcraidcraft.gm.else") || player.isOp()) {
-	         @SuppressWarnings("deprecation")
-			Player target = Bukkit.getServer().getPlayer(args[1]);
+	         Player target = Bukkit.getServer().getPlayer(args[1]);
 	         if(target != null && args.length == 2) {
 	           switch(args[0]) {
 	           case "0":

@@ -31,7 +31,6 @@ public class FlyCommand implements CommandExecutor {
 	}else{
 		if(player.hasPermission("mcraidcraft.fly.else")){
 			
-		@SuppressWarnings("deprecation")
 		Player target = Bukkit.getServer().getPlayer(args[0]);
 		if(target != null && args.length == 1){
 			if(target.getAllowFlight() == false){

@@ -38,7 +38,6 @@ public class NickCommand implements CommandExecutor
 				}
 		}
 		else if (args.length == 2){
-			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			if(target != null){
 				if(player.hasPermission("mcraidcraft.nick.else")){

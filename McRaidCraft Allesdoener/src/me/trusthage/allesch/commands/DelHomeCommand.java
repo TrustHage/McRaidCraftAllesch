@@ -40,7 +40,6 @@ public class DelHomeCommand implements CommandExecutor{
 				}
 			}else{
 				if(args.length == 1){
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getPlayer(args[0]);
 					if(homes.getString(target.getName()) != null){
 						homes.getString(target.getName().replaceAll(null, null));

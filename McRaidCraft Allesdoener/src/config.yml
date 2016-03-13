@@ -1,0 +1,12 @@
+# Plugin made by TrustHage, www.github.com/trusthage
+# Default ServerName is Shout, Change it to your server name
+ServerName: Shout
+
+# Cooldown Times (in seconds)
+TNTCooldown: 150
+RageCooldown: 600
+RegenCooldown: 600
+FuryCooldown: 600
+
+#Auto Message Time (in seconds)
+AutoMessageTime: 300

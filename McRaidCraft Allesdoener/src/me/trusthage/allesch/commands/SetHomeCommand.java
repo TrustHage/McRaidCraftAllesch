@@ -43,7 +43,6 @@ public class SetHomeCommand implements CommandExecutor{
 				}
 			}else{
 				if(args.length == 1){
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getPlayer(args[0]);
 					if(homes.getString(player.getName()) == null){
 						homes.set(target.getName(), player.getLocation());

@@ -11,7 +11,6 @@ import me.trusthage.allesch.other.Main;
 
 public class EnderChestCommand implements CommandExecutor{
 	
-	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
 		if(!(sender instanceof Player)) return false;

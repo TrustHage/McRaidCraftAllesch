@@ -24,7 +24,6 @@ public class UnMuteCommand implements CommandExecutor{
 				sender.sendMessage(ChatColor.RED + "Please type /unmute <playername>");
 			}else{
 				if(args.length == 1){
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					
 					if(target.getName() != sender.getName()){
@@ -57,7 +56,6 @@ public class UnMuteCommand implements CommandExecutor{
 					player.sendMessage(ChatColor.RED + "Please type /unmute <playername>");
 				}else{
 					if(args.length == 1){
-						@SuppressWarnings("deprecation")
 						Player target = Bukkit.getServer().getPlayer(args[0]);
 						
 						if(target.getName() != player.getName()){

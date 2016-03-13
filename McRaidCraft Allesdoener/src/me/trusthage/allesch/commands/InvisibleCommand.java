@@ -18,7 +18,6 @@ public class InvisibleCommand implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
 		if(!(sender instanceof Player)){
-			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getPlayer(args[0]);
 			if(args.length != 1){
 				sender.sendMessage(ChatColor.RED + "Please type /invis <playername>");

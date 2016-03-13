@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 
 public class HealCommand implements CommandExecutor{
 	
-	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
 		Player player = (Player)sender;

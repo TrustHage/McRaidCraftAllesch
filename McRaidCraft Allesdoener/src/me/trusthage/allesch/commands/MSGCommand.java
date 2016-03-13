@@ -18,7 +18,7 @@ public class MSGCommand implements CommandExecutor{
 	List<String> loaded = Main.plugin.loaded;
 	
 	public static HashMap<Player, Player> previousMessagedUsers = new HashMap<Player, Player>();
-	@SuppressWarnings({ "deprecation", "unused" })
+	@SuppressWarnings({ "unused" })
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
 		msg = this;

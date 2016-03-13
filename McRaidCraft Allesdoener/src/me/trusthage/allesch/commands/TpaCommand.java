@@ -13,7 +13,6 @@ public class TpaCommand implements CommandExecutor{
 	
 	public static HashMap<Player, Player> teleportrequest = new HashMap<Player, Player>();
 	
-	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		
 		if(!(sender instanceof Player)) return false;

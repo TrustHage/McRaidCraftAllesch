@@ -26,7 +26,6 @@ public class KickCommand implements CommandExecutor
 			}
 			
 			if(args.length == 1){
-			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 				if(target != null){
 					sender.sendMessage(ChatColor.GOLD + "You've kicked: " + ChatColor.RED + target.getName());
@@ -37,7 +36,6 @@ public class KickCommand implements CommandExecutor
 		}else{
 			if(args.length >= 2){
 				Server s = Bukkit.getServer();
-				@SuppressWarnings("deprecation")
 				Player target = s.getPlayer(args[0]);
 					if(target != null){
 						sender.sendMessage(ChatColor.GOLD + "You've kicked: " + ChatColor.RED + target.getName() + ChatColor.GOLD + "reason: " + ChatColor.RED + args[1]);
@@ -62,7 +60,6 @@ public class KickCommand implements CommandExecutor
 		
 		
 		if(args.length == 1){
-			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 			if(player.hasPermission("mcraidcraft.kick")){
 				if(target != null){
@@ -77,7 +74,6 @@ public class KickCommand implements CommandExecutor
 		}else{
 			if(args.length >= 2){
 				Server s = Bukkit.getServer();
-				@SuppressWarnings("deprecation")
 				Player target = s.getPlayer(args[0]);
 				if(player.hasPermission("mcraidcraft.kick")){
 					if(target != null){

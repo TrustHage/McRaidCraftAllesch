@@ -23,7 +23,6 @@ public class ClearInvCommand implements CommandExecutor{
 			}
 		}else{
 			if(player.hasPermission("mcraidcraft.clearinv.else")){
-				@SuppressWarnings("deprecation")
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				if(target != null && args.length == 1){
 					 player.sendMessage(ChatColor.GOLD + "You cleared " + ChatColor.RED + target.getDisplayName() + "'s " + ChatColor.GOLD + "inventory ");

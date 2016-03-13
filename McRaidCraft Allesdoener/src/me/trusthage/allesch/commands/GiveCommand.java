@@ -24,7 +24,6 @@ public class GiveCommand implements CommandExecutor{
 				player.sendMessage(ChatColor.RED + "please type /give <player> <item> (<amount>)");
 			}else{
 				if(args.length == 2){
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					switch (args[1]){
 					case "stone":

@@ -17,7 +17,6 @@ public class GodCommand implements CommandExecutor{
 		
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player)sender;
-		@SuppressWarnings("deprecation")
 		Player target = Bukkit.getPlayer(args[0]);
 		
 		if(args.length == 0){

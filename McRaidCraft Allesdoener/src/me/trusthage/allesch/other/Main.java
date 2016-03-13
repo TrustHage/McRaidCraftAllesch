@@ -23,6 +23,7 @@ import me.trusthage.allesch.commands.DelHomeCommand;
 import me.trusthage.allesch.commands.EnchantCommand;
 import me.trusthage.allesch.commands.EnderChestCommand;
 import me.trusthage.allesch.commands.FeedCommand;
+import me.trusthage.allesch.commands.FirstJoinMessageCommand;
 import me.trusthage.allesch.commands.FlyCommand;
 import me.trusthage.allesch.commands.FuryCommand;
 import me.trusthage.allesch.commands.GMCommand;
@@ -32,6 +33,7 @@ import me.trusthage.allesch.commands.HealCommand;
 import me.trusthage.allesch.commands.HomeCommand;
 import me.trusthage.allesch.commands.InfoCommand;
 import me.trusthage.allesch.commands.InvisibleCommand;
+import me.trusthage.allesch.commands.JoinMessageCommand;
 import me.trusthage.allesch.commands.KickCommand;
 import me.trusthage.allesch.commands.LoginCommand;
 import me.trusthage.allesch.commands.MSGCommand;
@@ -58,8 +60,10 @@ public class Main extends JavaPlugin
 	
 	public File homesFile = new File(getDataFolder()+"/data/homes.yml");
 	public File loginFile = new File(getDataFolder()+"/data/playerlogins.yml");
+	public File joinMessageFile = new File(getDataFolder()+"/data/joinmessage.yml");
 	public FileConfiguration homes = YamlConfiguration.loadConfiguration(homesFile);
 	public FileConfiguration logins = YamlConfiguration.loadConfiguration(loginFile);
+	public FileConfiguration jmessage = YamlConfiguration.loadConfiguration(joinMessageFile);
 	
 	public static List<String> mute = new ArrayList<String>();
 	public static Main plugin;
@@ -71,6 +75,8 @@ public class Main extends JavaPlugin
 	
 	public Logger logger = Logger.getLogger("Minecraft");
 	public PluginDescriptionFile pdfFile = getDescription();
+
+	
 	
 	public void onEnable()
 	{	
@@ -81,6 +87,8 @@ public class Main extends JavaPlugin
 		saveDefaultConfig();
 		logger.info("McRaidCraft Allesch has been enabled!");
 		getCommand("tnt").setExecutor(new TNTCommand());
+		getCommand("jm").setExecutor(new JoinMessageCommand());
+		getCommand("fjm").setExecutor(new FirstJoinMessageCommand());
 		getCommand("rage").setExecutor(new RageCommand());
 		getCommand("regen").setExecutor(new RegenCommand());
 		getCommand("fury").setExecutor(new FuryCommand());
@@ -121,9 +129,10 @@ public class Main extends JavaPlugin
 		getCommand("enchant").setExecutor(new EnchantCommand());
 		getCommand("invis").setExecutor(new InvisibleCommand());
 		PluginManager pm = Bukkit.getServer().getPluginManager();
+		//pm.registerEvents(new LoginListener(), this);
 		pm.registerEvents(new GodListener(), this);
 		pm.registerEvents(new ChatListener(), this);
-		pm.registerEvents(new LoginListener(), this);
+		pm.registerEvents(new JoinListener(), this);
 	}
 	
 	public void onDisable()
@@ -139,6 +148,7 @@ public class Main extends JavaPlugin
 		try{
 			logins.save(loginFile);
 			homes.save(homesFile);
+			jmessage.save(joinMessageFile);
 		}catch (IOException e){
 			e.printStackTrace();
 		}
@@ -147,15 +157,46 @@ public class Main extends JavaPlugin
 	public void loadFiles(){
 		if(homesFile.exists()){
 			try{
-				logins.load(loginFile);
 				homes.load(homesFile);
+				logger.info("homes.yml has been loaded.");
 			}catch (IOException | InvalidConfigurationException e){
 				e.printStackTrace();
 			}
 		}else{
 			try{
-				logins.save(loginFile);
 				homes.save(homesFile);
+				logger.info("homes.yml has been created, path: /data/homes.yml");
+			}catch (IOException e){
+				e.printStackTrace();
+			}
+		}
+		
+		if(!loginFile.exists()){
+			try{
+				logins.save(loginFile);
+				logger.info("playerlogins.yml has been created, path: /data/playerlogins.yml");
+			}catch (IOException e){
+				e.printStackTrace();
+			}
+		}else{
+			try{
+				logins.load(loginFile);
+				logger.info("playerlogins.yml has been loaded.");
+			}catch (IOException | InvalidConfigurationException e){
+				e.printStackTrace();
+			}
+		}
+		if(joinMessageFile.exists()){
+			try{
+				jmessage.load(joinMessageFile);
+				logger.info("joinmessage.yml has been loaded.");
+			}catch (IOException | InvalidConfigurationException e){
+				e.printStackTrace();
+			}
+		}else{
+			try{
+				jmessage.save(joinMessageFile);
+				logger.info("joinmessage.yml has been created, path: /data/joinmessage.yml");
 			}catch (IOException e){
 				e.printStackTrace();
 			}

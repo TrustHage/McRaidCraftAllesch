@@ -21,7 +21,6 @@ public class MuteCommand implements CommandExecutor{
 		List<String> loaded = Main.plugin.loaded;
 		
 		if(!(sender instanceof Player)) {
-			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 				if(target != null){
 					if(loaded.contains(target.getName()) || mute.contains(target.getName())){
@@ -48,7 +47,6 @@ public class MuteCommand implements CommandExecutor{
 				player.sendMessage(ChatColor.RED + "Please type /mute <playername>");
 			}else{
 				if(args.length == 1){
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if(target.getName() != player.getName()){
 						if(target != null){

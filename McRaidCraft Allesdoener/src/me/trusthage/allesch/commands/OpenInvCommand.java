@@ -21,7 +21,6 @@ public class OpenInvCommand implements CommandExecutor
 			}
 		}else{
 			if (player.hasPermission("mcraidcraft.openinv")){
-				@SuppressWarnings("deprecation")
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				if(target != null && args.length == 1){
 					player.openInventory(target.getInventory());

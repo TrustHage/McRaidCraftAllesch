@@ -27,7 +27,6 @@ public class FeedCommand implements CommandExecutor{
 				}			
 			}else{
 				if(args.length == 1){	
-					@SuppressWarnings("deprecation")
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					switch(args[0]){			
 					case "1":
@@ -201,7 +200,6 @@ public class FeedCommand implements CommandExecutor{
 				}else{
 					if(player.hasPermission("mcraidcraft.feed.else")){
 						if(args.length == 2){
-							@SuppressWarnings("deprecation")
 							Player target = Bukkit.getServer().getPlayer(args[0]);
 							switch(args[1]){
 							case "1":

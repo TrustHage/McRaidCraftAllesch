@@ -20,67 +20,150 @@ public class LoginListener implements Listener{
 	List<String> loadedloggedin = Main.plugin.loadedloggedin;
 	FileConfiguration logins = Main.plugin.logins;
 	
+	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e){
-		Player player = e.getPlayer();
-		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(logins.contains(player.getName()))){
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+		if(logins.getString("enabled").equals("true")){
+			Player player = e.getPlayer();
+			if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+				if(!(logins.contains(player.getName()))){
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+				}else{
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				}
+			}
+		}else{
+			if(logins.getString("enabled").equals("false")){
+				
 			}else{
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				Player player = e.getPlayer();
+				if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+					if(!(logins.contains(player.getName()))){
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+					}else{
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+					}
+				}
 			}
 		}
 	}
 	
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e){
-		Player player = e.getPlayer();
-		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(logins.contains(player.getName()))){
-				e.setCancelled(true);
+		if(logins.getString("enabled").equals("true")){
+			Player player = e.getPlayer();
+			if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+				if(!(logins.contains(player.getName()))){
+					e.setCancelled(true);
+					
+				}else{
+					e.setCancelled(true);
+					
+				}
+			}
+		}else{
+			if(logins.getString("enabled").equals("false")){
 				
 			}else{
-				e.setCancelled(true);
-				
+				Player player = e.getPlayer();
+				if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+					if(!(logins.contains(player.getName()))){
+						e.setCancelled(true);
+						
+					}else{
+						e.setCancelled(true);
+						
+					}
+				}
 			}
 		}
+		
 	}
 	
 	@EventHandler
 	public void onPlayerChat(PlayerChatEvent e){
-		Player player = e.getPlayer();
-		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(logins.contains(player.getName()))){
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+		if(logins.getString("enabled").equals("true")){
+			Player player = e.getPlayer();
+			if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+				if(!(logins.contains(player.getName()))){
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+				}else{
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				}
+			}
+		}else{
+			if(logins.getString("enabled").equals("false")){
+				
 			}else{
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				Player player = e.getPlayer();
+				if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+					if(!(logins.contains(player.getName()))){
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+					}else{
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+					}
+				}
 			}
 		}
+		
 	}
 	
 	@EventHandler
 	public void onPlayerCommand(PlayerTeleportEvent e){
-		Player player = e.getPlayer();
-		if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
-			if(!(logins.contains(player.getName()))){
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+		if(logins.getString("enabled").equals("true")){
+			Player player = e.getPlayer();
+			if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+				if(!(logins.contains(player.getName()))){
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+				}else{
+					e.setCancelled(true);
+					player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				}
+			}
+		}else{
+			if(logins.getString("enabled").equals("false")){
+				
 			}else{
-				e.setCancelled(true);
-				player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+				Player player = e.getPlayer();
+				if(!(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName()))){
+					if(!(logins.contains(player.getName()))){
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please register with, /register <password> <password>");
+					}else{
+						e.setCancelled(true);
+						player.sendMessage(ChatColor.RED + "Please Login with, /login <password>");
+					}
+				}
 			}
 		}
+		
 	}
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerQuitEvent e){
-		Player player = e.getPlayer();
-		if(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName())){
-			loggedinplayers.remove(player.getName()); loadedloggedin.remove(player.getName());
+		if(logins.getString("enabled").equals("true")){
+			Player player = e.getPlayer();
+			if(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName())){
+				loggedinplayers.remove(player.getName()); loadedloggedin.remove(player.getName());
+			}
+		}else{
+			if(logins.getString("enabled").equals("false")){
+				
+			}else{
+				Player player = e.getPlayer();
+				if(loggedinplayers.contains(player.getName()) || loadedloggedin.contains(player.getName())){
+					loggedinplayers.remove(player.getName()); loadedloggedin.remove(player.getName());
+				}
+			}
 		}
 	}
 }
